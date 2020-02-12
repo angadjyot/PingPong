@@ -26,7 +26,7 @@ class MenuVC : UIViewController{
     @IBOutlet weak var easyOutlet: UIButton!
     @IBOutlet weak var mediumOutlet: UIButton!
     @IBOutlet weak var hardOutlet: UIButton!
-    
+    @IBOutlet weak var instructionsOutlet: UIButton!
     
     
     override func viewDidLoad() {
@@ -36,16 +36,21 @@ class MenuVC : UIViewController{
 
         easyOutlet.layer.borderWidth = 1
         easyOutlet.layer.masksToBounds = false
-        easyOutlet.layer.cornerRadius = p2.frame.size.width/2
+        easyOutlet.layer.cornerRadius = easyOutlet.frame.size.width/2
         
         mediumOutlet.layer.borderWidth = 1
         mediumOutlet.layer.masksToBounds = false
-        mediumOutlet.layer.cornerRadius = p2.frame.size.width/2
+        mediumOutlet.layer.cornerRadius = mediumOutlet.frame.size.width/2
 
         hardOutlet.layer.borderWidth = 1
         hardOutlet.layer.masksToBounds = false
-        hardOutlet.layer.cornerRadius = p2.frame.size.width/2
+        hardOutlet.layer.cornerRadius = hardOutlet.frame.size.width/2
 
+        instructionsOutlet.layer.borderWidth = 1
+        instructionsOutlet.layer.masksToBounds = false
+        instructionsOutlet.layer.cornerRadius = instructionsOutlet.frame.size.width/2
+
+        
     }
     
     
@@ -80,6 +85,11 @@ class MenuVC : UIViewController{
         
     }
  
+    
+    @IBAction func instructionAction(_ sender: UIButton) {
+    }
+    
+    
     
     
     
