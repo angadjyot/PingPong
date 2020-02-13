@@ -18,6 +18,9 @@
 		D4942C2523DD302C00ED4FE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4942C2323DD302C00ED4FE7 /* LaunchScreen.storyboard */; };
 		D4942C3023DD302C00ED4FE7 /* PingPongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4942C2F23DD302C00ED4FE7 /* PingPongTests.swift */; };
 		D4942C3B23DD302C00ED4FE7 /* PingPongUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4942C3A23DD302C00ED4FE7 /* PingPongUITests.swift */; };
+		D4EF8DB823F486BB00CD4363 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EF8DB723F486BB00CD4363 /* InstructionsViewController.swift */; };
+		D4EF8DBA23F4A68C00CD4363 /* win.wav in Resources */ = {isa = PBXBuildFile; fileRef = D4EF8DB923F4A68B00CD4363 /* win.wav */; };
+		D4EF8DBC23F4A9D600CD4363 /* HITTING.wav in Resources */ = {isa = PBXBuildFile; fileRef = D4EF8DBB23F4A9D600CD4363 /* HITTING.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,9 @@
 		D4942C3623DD302C00ED4FE7 /* PingPongUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PingPongUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4942C3A23DD302C00ED4FE7 /* PingPongUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PingPongUITests.swift; sourceTree = "<group>"; };
 		D4942C3C23DD302C00ED4FE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4EF8DB723F486BB00CD4363 /* InstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
+		D4EF8DB923F4A68B00CD4363 /* win.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = win.wav; sourceTree = "<group>"; };
+		D4EF8DBB23F4A9D600CD4363 /* HITTING.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HITTING.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,9 +118,12 @@
 				D4942C1C23DD302A00ED4FE7 /* GameViewController.swift */,
 				D4942C1E23DD302A00ED4FE7 /* Main.storyboard */,
 				D491A02A23E5FDA100072442 /* MenuVC.swift */,
+				D4EF8DBB23F4A9D600CD4363 /* HITTING.wav */,
+				D4EF8DB923F4A68B00CD4363 /* win.wav */,
 				D4942C2123DD302C00ED4FE7 /* Assets.xcassets */,
 				D4942C2323DD302C00ED4FE7 /* LaunchScreen.storyboard */,
 				D4942C2623DD302C00ED4FE7 /* Info.plist */,
+				D4EF8DB723F486BB00CD4363 /* InstructionsViewController.swift */,
 			);
 			path = PingPong;
 			sourceTree = "<group>";
@@ -241,9 +250,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4EF8DBC23F4A9D600CD4363 /* HITTING.wav in Resources */,
 				D4942C2023DD302A00ED4FE7 /* Main.storyboard in Resources */,
 				D4942C1723DD302A00ED4FE7 /* GameScene.sks in Resources */,
 				D4942C2223DD302C00ED4FE7 /* Assets.xcassets in Resources */,
+				D4EF8DBA23F4A68C00CD4363 /* win.wav in Resources */,
 				D4942C2523DD302C00ED4FE7 /* LaunchScreen.storyboard in Resources */,
 				D4942C1923DD302A00ED4FE7 /* Actions.sks in Resources */,
 			);
@@ -274,6 +285,7 @@
 				D491A02B23E5FDA100072442 /* MenuVC.swift in Sources */,
 				D4942C1D23DD302A00ED4FE7 /* GameViewController.swift in Sources */,
 				D4942C1523DD302A00ED4FE7 /* AppDelegate.swift in Sources */,
+				D4EF8DB823F486BB00CD4363 /* InstructionsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

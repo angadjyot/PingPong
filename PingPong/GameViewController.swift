@@ -9,12 +9,14 @@
 import UIKit
 import SpriteKit
 import GameplayKit
-
+import AVFoundation
 
 var currentGametype = gameType.medium
 
 class GameViewController: UIViewController {
 
+     var bombSoundEffect: AVAudioPlayer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,8 +35,25 @@ class GameViewController: UIViewController {
             
             view.showsFPS = true
             view.showsNodeCount = true
+            
+          //  play(sound: "HITTING")
+            
         }
     }
+    
+    func play(sound name : String){
+        
+        guard let url = Bundle.main.url(forResource: name, withExtension: "wav") else{
+            return
+        }
+        do{
+            bombSoundEffect = try? AVAudioPlayer(contentsOf: url)
+            bombSoundEffect?.numberOfLoops = 1
+            bombSoundEffect?.play()
+        }
+        
+    }
+    
 
     override var shouldAutorotate: Bool {
         return true
@@ -52,14 +71,37 @@ class GameViewController: UIViewController {
         return true
     }
     
-    
+     var sharedInstance = GameScene()
     
     @IBAction func exit(_ sender: UIButton) {
+        
+        
+      //  sharedInstance.removeFromParent()
+       
+        
         let gameVC = self.storyboard?.instantiateViewController(withIdentifier: "menuVC") as! MenuVC
         
-//        currentGametype = game
+//        gameVC.dismiss(animated: true, completion: nil)
+//        self.view.window?.rootViewController?.present(gameVC, animated: true, completion: nil)
         
+       // sharedInstance.bombSoundEffect?.stop()
         
         self.navigationController?.pushViewController(gameVC, animated: true)
+      
+        
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("did applear")
+        
+      //  play(sound: "win")
+        
+     //   self.bombSoundEffect?.stop()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("will applear")
+      //  self.bombSoundEffect?.stop()
+    }
+    
 }

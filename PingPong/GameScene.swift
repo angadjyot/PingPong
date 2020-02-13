@@ -9,6 +9,7 @@
 import SpriteKit
 import GameplayKit
 import UIKit
+import AVFoundation
 
 
 class GameScene: SKScene {
@@ -21,6 +22,10 @@ class GameScene: SKScene {
     var bottomLabel = SKLabelNode()
     
     var score = [Int]()
+    let node = SKNode()
+    
+    var bombSoundEffect: AVAudioPlayer?
+    var backgroundMusic: SKAudioNode!
     
     override func didMove(to view: SKView) {
         
@@ -44,8 +49,20 @@ class GameScene: SKScene {
         
         self.physicsBody = border
         
+        if currentGametype == .player2{
+            self.backgroundColor = UIColor.blue
+        }else if currentGametype == .easy{
+            self.backgroundColor = UIColor.black
+        }else if currentGametype == .medium{
+            self.backgroundColor = UIColor.darkGray
+        }else if currentGametype == .hard{
+            self.backgroundColor = UIColor.purple
+        }
+
         
         startGame()
+        
+        
         
     }
     
@@ -55,8 +72,30 @@ class GameScene: SKScene {
         topLabel.text = "\(score[1])"
         bottomLabel.text = "\(score[0])"
         ball.physicsBody?.applyImpulse(CGVector(dx: 8, dy: 8))
+        
+//        let sound = SKAction.playSoundFileNamed("win.wav", waitForCompletion: false)
+//        node.run(sound)
     
+        
+       // bombSoundEffect?.numberOfLoops = -1
+      //  self.play(sound: "HITTING")
+   
+        
     }
+    
+    func play(sound name : String){
+        
+        guard let url = Bundle.main.url(forResource: name, withExtension: "wav") else{
+            return
+        }
+        do{
+            bombSoundEffect = try? AVAudioPlayer(contentsOf: url)
+            bombSoundEffect?.numberOfLoops = -1
+            bombSoundEffect?.play()
+        }
+      
+    }
+    
     
     func addScore(winner:SKSpriteNode){
         
@@ -64,9 +103,11 @@ class GameScene: SKScene {
         ball.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         
         if winner == main{
+            bombSoundEffect?.stop()
             score[0] += 1
             ball.physicsBody?.applyImpulse(CGVector(dx: 8, dy: 8))
         }else if winner == enemy{
+            bombSoundEffect?.stop()
             score[1] += 1
             ball.physicsBody?.applyImpulse(CGVector(dx: -8, dy: -8))
         }
@@ -74,6 +115,7 @@ class GameScene: SKScene {
         print("score is",score)
         topLabel.text = "\(score[1])"
         bottomLabel.text = "\(score[0])"
+        play(sound: "HITTING")
     }
     
     
@@ -103,6 +145,7 @@ class GameScene: SKScene {
             if currentGametype == .player2{
                 if location.y > 0{
                     enemy.run(SKAction.moveTo(x: location.x, duration: 0.2))
+                    
                 }
                 if location.y < 0{
                     main.run(SKAction.moveTo(x: location.x, duration: 0.2))
@@ -146,5 +189,7 @@ class GameScene: SKScene {
         }
         
     }
+    
+    
     
 }
