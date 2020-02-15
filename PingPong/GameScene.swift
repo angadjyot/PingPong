@@ -14,25 +14,27 @@ import AVFoundation
 
 class GameScene: SKScene {
     
+   // declaring the sprite node objects
+    
     var ball = SKSpriteNode()
     var enemy = SKSpriteNode()
     var main = SKSpriteNode()
     
+   // declaring the label for scores
     var topLabel = SKLabelNode()
     var bottomLabel = SKLabelNode()
     
+   // array for scores
     var score = [Int]()
     let node = SKNode()
     
+   // objects for sound effects
     var bombSoundEffect: AVAudioPlayer?
     var backgroundMusic: SKAudioNode!
     
-    var alert = GameoverActionSheet()
-    
     override func didMove(to view: SKView) {
-        
-        
-        
+  
+    //   adding the objects into the view
         ball = self.childNode(withName: "ball") as! SKSpriteNode
         
         enemy = self.childNode(withName: "enemy") as! SKSpriteNode
@@ -45,12 +47,15 @@ class GameScene: SKScene {
         topLabel = self.childNode(withName: "topLabel") as! SKLabelNode
         bottomLabel = self.childNode(withName: "bottomLabel") as! SKLabelNode
         
+        
+    // setting the frame according to the frame
         let border = SKPhysicsBody(edgeLoopFrom: self.frame)
         border.friction = 0
         border.restitution = 1
-        
         self.physicsBody = border
+      
         
+    // setting the background and object color accoring to the current game type
         if currentGametype == .player2{
             self.backgroundColor = UIColor(displayP3Red: 203/255, green: 141/255, blue: 141/255, alpha:1)
             self.main.color = UIColor.black
@@ -74,14 +79,14 @@ class GameScene: SKScene {
             self.enemy.color = UIColor.black
         }
 
-        
+  // starting the game after all the objects are added in the scene
         startGame()
         
         
         
     }
     
-    
+// function for starting the game
     func startGame(){
         score = [0,0]
         topLabel.text = "\(score[1])"
@@ -93,11 +98,13 @@ class GameScene: SKScene {
     
         
        // bombSoundEffect?.numberOfLoops = -1
-      //  self.play(sound: "HITTING")
+        self.play(sound: "HITTING")
    
         
     }
+
     
+ // function for playing the sound
     func play(sound name : String){
         
         guard let url = Bundle.main.url(forResource: name, withExtension: "wav") else{
@@ -111,7 +118,7 @@ class GameScene: SKScene {
       
     }
     
-    
+ // function for adding the score for the particular player
     func addScore(winner:SKSpriteNode){
         
         ball.position = CGPoint(x: 0, y: 0)
@@ -138,17 +145,9 @@ class GameScene: SKScene {
         play(sound: "HITTING")
     }
     
-    func restart(){
-        startGame()
-    }
+ 
     
-    func menu(){
-        
-//        let gameVC = self.storyboard?.instantiateViewController(withIdentifier: "menuVC") as! MenuVC
-//        self.navigationController?.pushViewController(gameVC, animated: true)
-    }
-    
-    
+// pre build function, when the screen is touched for the first time
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         for touch in touches{
@@ -168,6 +167,8 @@ class GameScene: SKScene {
         }
     }
     
+    
+//  pre build function, when the screen is touched for one or more time
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches{
             let location = touch.location(in: self)
@@ -188,7 +189,7 @@ class GameScene: SKScene {
     }
     
     
-    
+  // function for updating the scene
     override func update(_ currentTime: TimeInterval) {
         
         

@@ -10,9 +10,10 @@ import UIKit
 
 class InstructionsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
-    
+    // declaring the table view
     @IBOutlet weak var tableview: UITableView!
-    
+  
+  // declaring the array
     var arr = ["Ball will continuosly strike in between the paddles.","Both the players will try their best to save the ball and does not allow to go beyond the paddles.","The player who misses the ball to strike will result in the increment of scoe of the opposite player.","The player with  highest score will win the game."]
     
     
@@ -21,11 +22,13 @@ class InstructionsViewController: UIViewController,UITableViewDelegate,UITableVi
 
         // Do any additional setup after loading the view.
     }
-    
+   
+ // function for no of items in a table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arr.count
     }
-    
+ 
+ // function for populating the table view
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell")!
         
@@ -36,10 +39,13 @@ class InstructionsViewController: UIViewController,UITableViewDelegate,UITableVi
         }
         return cell
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
-    }
     
+  // function for height of the row
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 110
+    }
+  
+  // action for closing the view
     @IBAction func close(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }

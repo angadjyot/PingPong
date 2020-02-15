@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+
+// declaring the enum for current game type
 enum gameType{
     case easy
     case medium
@@ -20,7 +22,7 @@ enum gameType{
 
 class MenuVC : UIViewController{
     
-    
+    // declaring the buttons
     
     @IBOutlet weak var p2: UIButton!
     @IBOutlet weak var easyOutlet: UIButton!
@@ -30,6 +32,9 @@ class MenuVC : UIViewController{
     
     
     override func viewDidLoad() {
+   
+     // method for the circle button
+        
         p2.layer.borderWidth = 1
         p2.layer.masksToBounds = false
         p2.layer.cornerRadius = p2.frame.size.width/2
@@ -53,34 +58,36 @@ class MenuVC : UIViewController{
         
     }
     
-    
+  // action for player2
     @IBAction func player2(_ sender: UIButton) {
         moveToGame(game: .player2)
     }
+  
     
-    
+  // action for easy
     @IBAction func easy(_ sender: UIButton) {
         moveToGame(game: .easy)
     }
     
-    
+  // action for medium
     @IBAction func medium(_ sender: UIButton) {
         moveToGame(game: .medium)
     }
     
-    
+   // action for hard
     @IBAction func hard(_ sender: UIButton) {
         moveToGame(game: .hard)
     }
     
-    
+  
+ // function for navigating to the game
     func moveToGame(game:gameType){
-       // let gameVC = self.storyboard?.instantiateViewController(withIdentifier: "gameVC") as! GameViewController
+        let gameVC = self.storyboard?.instantiateViewController(withIdentifier: "gameVC") as! GameViewController
         
         currentGametype = game
-        self.performSegue(withIdentifier: "game", sender: nil)
+        //self.performSegue(withIdentifier: "game", sender: nil)
         
-       // self.navigationController?.pushViewController(gameVC, animated: true)
+        self.navigationController?.pushViewController(gameVC, animated: true)
         
         
     }

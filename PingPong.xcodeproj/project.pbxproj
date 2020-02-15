@@ -21,7 +21,6 @@
 		D4EF8DB823F486BB00CD4363 /* InstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EF8DB723F486BB00CD4363 /* InstructionsViewController.swift */; };
 		D4EF8DBA23F4A68C00CD4363 /* win.wav in Resources */ = {isa = PBXBuildFile; fileRef = D4EF8DB923F4A68B00CD4363 /* win.wav */; };
 		D4EF8DBC23F4A9D600CD4363 /* HITTING.wav in Resources */ = {isa = PBXBuildFile; fileRef = D4EF8DBB23F4A9D600CD4363 /* HITTING.wav */; };
-		D4EF8DBE23F4D48200CD4363 /* Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EF8DBD23F4D48200CD4363 /* Testing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +61,6 @@
 		D4EF8DB723F486BB00CD4363 /* InstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsViewController.swift; sourceTree = "<group>"; };
 		D4EF8DB923F4A68B00CD4363 /* win.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = win.wav; sourceTree = "<group>"; };
 		D4EF8DBB23F4A9D600CD4363 /* HITTING.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = HITTING.wav; sourceTree = "<group>"; };
-		D4EF8DBD23F4D48200CD4363 /* Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +116,6 @@
 				D4942C1823DD302A00ED4FE7 /* Actions.sks */,
 				D4942C1A23DD302A00ED4FE7 /* GameScene.swift */,
 				D4942C1C23DD302A00ED4FE7 /* GameViewController.swift */,
-				D4EF8DBD23F4D48200CD4363 /* Testing.swift */,
 				D4942C1E23DD302A00ED4FE7 /* Main.storyboard */,
 				D491A02A23E5FDA100072442 /* MenuVC.swift */,
 				D4EF8DBB23F4A9D600CD4363 /* HITTING.wav */,
@@ -284,7 +281,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4EF8DBE23F4D48200CD4363 /* Testing.swift in Sources */,
 				D4942C1B23DD302A00ED4FE7 /* GameScene.swift in Sources */,
 				D491A02B23E5FDA100072442 /* MenuVC.swift in Sources */,
 				D4942C1D23DD302A00ED4FE7 /* GameViewController.swift in Sources */,
