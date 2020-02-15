@@ -27,6 +27,8 @@ class GameScene: SKScene {
     var bombSoundEffect: AVAudioPlayer?
     var backgroundMusic: SKAudioNode!
     
+    var alert = GameoverActionSheet()
+    
     override func didMove(to view: SKView) {
         
         
@@ -50,13 +52,26 @@ class GameScene: SKScene {
         self.physicsBody = border
         
         if currentGametype == .player2{
-            self.backgroundColor = UIColor.blue
+            self.backgroundColor = UIColor(displayP3Red: 203/255, green: 141/255, blue: 141/255, alpha:1)
+            self.main.color = UIColor.black
+            self.enemy.color = UIColor.black
+
+            
         }else if currentGametype == .easy{
-            self.backgroundColor = UIColor.black
+           self.backgroundColor = UIColor(displayP3Red: 255/255, green: 153/255, blue: 51/255, alpha:1)
+            self.main.color = UIColor.black
+            self.enemy.color = UIColor.black
+            
         }else if currentGametype == .medium{
-            self.backgroundColor = UIColor.darkGray
+          //  self.backgroundColor = UIColor.darkGray
+            self.backgroundColor = UIColor(displayP3Red: 153/255, green: 153/255, blue: 255/255, alpha:1)
+            self.main.color = UIColor.black
+            self.enemy.color = UIColor.black
+            
         }else if currentGametype == .hard{
-            self.backgroundColor = UIColor.purple
+            self.backgroundColor = UIColor(displayP3Red: 0/255, green: 153/255, blue: 153/255, alpha:1)
+            self.main.color = UIColor.black
+            self.enemy.color = UIColor.black
         }
 
         
@@ -105,10 +120,15 @@ class GameScene: SKScene {
         if winner == main{
             bombSoundEffect?.stop()
             score[0] += 1
+        //    ball.removeFromParent()
+//            Testing.show(restart:restart(), menuCB:menu())
+            
             ball.physicsBody?.applyImpulse(CGVector(dx: 8, dy: 8))
         }else if winner == enemy{
             bombSoundEffect?.stop()
             score[1] += 1
+         //   ball.removeFromParent()
+    
             ball.physicsBody?.applyImpulse(CGVector(dx: -8, dy: -8))
         }
         
@@ -116,6 +136,16 @@ class GameScene: SKScene {
         topLabel.text = "\(score[1])"
         bottomLabel.text = "\(score[0])"
         play(sound: "HITTING")
+    }
+    
+    func restart(){
+        startGame()
+    }
+    
+    func menu(){
+        
+//        let gameVC = self.storyboard?.instantiateViewController(withIdentifier: "menuVC") as! MenuVC
+//        self.navigationController?.pushViewController(gameVC, animated: true)
     }
     
     

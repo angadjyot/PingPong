@@ -13,6 +13,26 @@ import AVFoundation
 
 var currentGametype = gameType.medium
 
+public struct GameoverActionSheet {
+    
+    public static func show(restart: @escaping ()->Void, menuCB: @escaping ()->Void) -> UIAlertController {
+        let actionSheet = UIAlertController(title: "Gameover", message: "Which one do you prefer?", preferredStyle: .actionSheet)
+        
+        let menu = UIAlertAction(title: "Go To The Menu", style: .destructive) { (action) in
+            menuCB()
+        }
+        
+        let yes = UIAlertAction(title: "Restart the game", style: .default) { (action) in
+            restart()
+        }
+        
+        actionSheet.addAction(yes)
+        actionSheet.addAction(menu)
+        
+        return actionSheet
+    }
+}
+
 class GameViewController: UIViewController {
 
      var bombSoundEffect: AVAudioPlayer?
@@ -74,21 +94,9 @@ class GameViewController: UIViewController {
      var sharedInstance = GameScene()
     
     @IBAction func exit(_ sender: UIButton) {
-        
-        
-      //  sharedInstance.removeFromParent()
-       
-        
+    
         let gameVC = self.storyboard?.instantiateViewController(withIdentifier: "menuVC") as! MenuVC
-        
-//        gameVC.dismiss(animated: true, completion: nil)
-//        self.view.window?.rootViewController?.present(gameVC, animated: true, completion: nil)
-        
-       // sharedInstance.bombSoundEffect?.stop()
-        
         self.navigationController?.pushViewController(gameVC, animated: true)
-      
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -103,5 +111,10 @@ class GameViewController: UIViewController {
         print("will applear")
       //  self.bombSoundEffect?.stop()
     }
+   
+    
+    
     
 }
+
+
