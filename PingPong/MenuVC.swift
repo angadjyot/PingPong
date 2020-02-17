@@ -1,10 +1,11 @@
-//
-//  MenuVC.swift
-//  PingPong
-//
-//  Created by Angadjot singh on 01/02/20.
-//  Copyright © 2020 Angadjot singh. All rights reserved.
-//
+
+
+// Author's Name - Angadjot Singh , Garima Prashar , Harnam Kaur
+// Student Number - 301060981,      301093329      , 301093907
+// Date last Modified - 01/02/20.
+// Program Descriptor - This file includes the levels of game 
+// Revision History - 1.0
+
 
 import Foundation
 import UIKit
