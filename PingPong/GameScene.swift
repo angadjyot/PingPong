@@ -17,8 +17,8 @@ class GameScene: SKScene {
    // declaring the sprite node objects
     
     var ball = SKSpriteNode()
-    var enemy = SKSpriteNode()
-    var main = SKSpriteNode()
+    var enemyPlayer = SKSpriteNode()
+    var mainPlayer = SKSpriteNode()
     
    // declaring the label for scores
     var topLabel = SKLabelNode()
@@ -37,12 +37,12 @@ class GameScene: SKScene {
     //   adding the objects into the view
         ball = self.childNode(withName: "ball") as! SKSpriteNode
         
-        enemy = self.childNode(withName: "enemy") as! SKSpriteNode
-        enemy.position.y = (self.frame.height/2) - 50
+        enemyPlayer = self.childNode(withName: "enemy") as! SKSpriteNode
+        enemyPlayer.position.y = (self.frame.height/2) - 50
         
         
-        main = self.childNode(withName: "main") as! SKSpriteNode
-        main.position.y = (-self.frame.height/2) + 50
+        mainPlayer = self.childNode(withName: "main") as! SKSpriteNode
+        mainPlayer.position.y = (-self.frame.height/2) + 50
         
         topLabel = self.childNode(withName: "topLabel") as! SKLabelNode
         bottomLabel = self.childNode(withName: "bottomLabel") as! SKLabelNode
@@ -58,25 +58,25 @@ class GameScene: SKScene {
     // setting the background and object color accoring to the current game type
         if currentGametype == .player2{
             self.backgroundColor = UIColor(displayP3Red: 203/255, green: 141/255, blue: 141/255, alpha:1)
-            self.main.color = UIColor.black
-            self.enemy.color = UIColor.black
+            self.mainPlayer.color = UIColor.black
+            self.enemyPlayer.color = UIColor.black
 
             
         }else if currentGametype == .easy{
            self.backgroundColor = UIColor(displayP3Red: 255/255, green: 153/255, blue: 51/255, alpha:1)
-            self.main.color = UIColor.black
-            self.enemy.color = UIColor.black
+            self.mainPlayer.color = UIColor.black
+            self.enemyPlayer.color = UIColor.black
             
         }else if currentGametype == .medium{
           //  self.backgroundColor = UIColor.darkGray
             self.backgroundColor = UIColor(displayP3Red: 153/255, green: 153/255, blue: 255/255, alpha:1)
-            self.main.color = UIColor.black
-            self.enemy.color = UIColor.black
+            self.mainPlayer.color = UIColor.black
+            self.enemyPlayer.color = UIColor.black
             
         }else if currentGametype == .hard{
             self.backgroundColor = UIColor(displayP3Red: 0/255, green: 153/255, blue: 153/255, alpha:1)
-            self.main.color = UIColor.black
-            self.enemy.color = UIColor.black
+            self.mainPlayer.color = UIColor.black
+            self.enemyPlayer.color = UIColor.black
         }
 
   // starting the game after all the objects are added in the scene
@@ -124,14 +124,14 @@ class GameScene: SKScene {
         ball.position = CGPoint(x: 0, y: 0)
         ball.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         
-        if winner == main{
+        if winner == mainPlayer{
             bombSoundEffect?.stop()
             score[0] += 1
         //    ball.removeFromParent()
 //            Testing.show(restart:restart(), menuCB:menu())
             
             ball.physicsBody?.applyImpulse(CGVector(dx: 8, dy: 8))
-        }else if winner == enemy{
+        }else if winner == enemyPlayer{
             bombSoundEffect?.stop()
             score[1] += 1
          //   ball.removeFromParent()
@@ -155,13 +155,13 @@ class GameScene: SKScene {
             
             if currentGametype == .player2{
                 if location.y > 0{
-                    enemy.run(SKAction.moveTo(x: location.x, duration: 0.2))
+                    enemyPlayer.run(SKAction.moveTo(x: location.x, duration: 0.2))
                 }
                 if location.y < 0{
-                    main.run(SKAction.moveTo(x: location.x, duration: 0.2))
+                    mainPlayer.run(SKAction.moveTo(x: location.x, duration: 0.2))
                 }
             }else{
-                main.run(SKAction.moveTo(x: location.x, duration: 0.2))
+                mainPlayer.run(SKAction.moveTo(x: location.x, duration: 0.2))
             }
             
         }
@@ -175,14 +175,14 @@ class GameScene: SKScene {
             
             if currentGametype == .player2{
                 if location.y > 0{
-                    enemy.run(SKAction.moveTo(x: location.x, duration: 0.2))
+                    enemyPlayer.run(SKAction.moveTo(x: location.x, duration: 0.2))
                     
                 }
                 if location.y < 0{
-                    main.run(SKAction.moveTo(x: location.x, duration: 0.2))
+                    mainPlayer.run(SKAction.moveTo(x: location.x, duration: 0.2))
                 }
             }else{
-                   main.run(SKAction.moveTo(x: location.x, duration: 0.2))
+                   mainPlayer.run(SKAction.moveTo(x: location.x, duration: 0.2))
             }
             
         }
@@ -195,14 +195,14 @@ class GameScene: SKScene {
         
         switch currentGametype {
         case .easy:
-          enemy.run(SKAction.moveTo(x: ball.position.x, duration: 2.0))
+          enemyPlayer.run(SKAction.moveTo(x: ball.position.x, duration: 2.0))
           break
         case .medium:
-          enemy.run(SKAction.moveTo(x: ball.position.x, duration: 1.7))
+          enemyPlayer.run(SKAction.moveTo(x: ball.position.x, duration: 1.7))
           break
             
         case .hard:
-          enemy.run(SKAction.moveTo(x: ball.position.x, duration: 1.7))
+          enemyPlayer.run(SKAction.moveTo(x: ball.position.x, duration: 1.7))
           break
             
         case .player2:
@@ -212,11 +212,11 @@ class GameScene: SKScene {
             break
         }
         
-        if ball.position.y <= main.position.y - 30{
-            addScore(winner: enemy)
+        if ball.position.y <= mainPlayer.position.y - 30{
+            addScore(winner: enemyPlayer)
             
-        }else if ball.position.y >= enemy.position.y + 30{
-            addScore(winner: main)
+        }else if ball.position.y >= enemyPlayer.position.y + 30{
+            addScore(winner: mainPlayer)
         }
         
     }
